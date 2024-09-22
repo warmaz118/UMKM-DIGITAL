@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: EuclidBold;
+        src: url('../assets/font/Euclid_Circular_A_Bold.ttf');
+    }
+    @font-face {
+        font-family: EuclidSemiBold;
+        src: url('../assets/font/Euclid_Circular_A_SemiBold.ttf');
+    }
+    @font-face {
+        font-family: EuclidRegular;
+        src: url('../assets/font/Euclid_Circular_A_Regular.ttf');
+    }
+}
+
+body > iframe {
+    display: none;
+}

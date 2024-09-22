@@ -3,7 +3,7 @@ import { RouterInterface, withRouterInterface } from "../../../router/interface"
 import Form from "../../../components/Form/Form";
 import { FormProps } from "../../../components/Form/model";
 import { pengguna_form } from "./controller";
-import  Button  from "../../../components/Button/Button";
+import { Button } from "@angelineuniverse/design";
 import  Icon  from "../../../components/Icon/Icon";
 class  FormData extends Component <RouterInterface> {
 

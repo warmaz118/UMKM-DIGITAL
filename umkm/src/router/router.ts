@@ -62,8 +62,14 @@ export function authExist() {
                                     let Pengguna = await import("../layout/master/pengguna/index");
                                     return {Component: Pengguna.default};
                                 }
+                            },
+                            {
+                                path: "form",
+                                async lazy() {
+                                    let Pengguna = await import("../layout/master/pengguna/form");
+                                    return {Component: Pengguna.default};
+                                }
                             }
-                            
                         ]
                     }
                 ]

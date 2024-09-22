@@ -5,3 +5,7 @@ export function pengguna_index(params?: any) {
         params: params
     });
 }
+
+export function pengguna_form() {
+    return client.get("/user/form");
+}

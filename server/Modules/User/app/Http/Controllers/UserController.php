@@ -13,6 +13,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Sanctum\PersonalAccessToken;
+use Modules\Master\Models\MAccessTab;
 use Modules\User\Emails\AuthRegister;
 
 class UserController extends Controller
@@ -20,9 +21,11 @@ class UserController extends Controller
 
     protected $mUserTab; 
     protected $controller;
-    public function __construct(MUserTab $mUserTab, Controller $controller) {
+    protected $mAccessTab;
+    public function __construct(MUserTab $mUserTab, Controller $controller, MAccessTab $mAccessTab) {
         $this->mUserTab = $mUserTab;
         $this->controller = $controller;
+        $this->mAccessTab = $mAccessTab;
     }
     /**
      * Display a listing of the resource.
@@ -37,7 +40,39 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user::create');
+        return $this->controller->responses('FORM USER', 
+    array(
+        [
+            "key" => "email",
+            "email" => null,
+            "type" => "text",
+            "label" => "Email",
+            "placeholder" => "Masukkan Email",
+            "isRequired" => true
+        ],
+        [
+            "key" => "password",
+            "password" => null,
+            "type" => "password",
+            "label" => "Password",
+            "placeholder" => "Masukkan Password",
+            "isRequired" => true
+        ],
+        [
+            "key" => "m_access_tab_id",
+            "m_access_tab_id" => null,
+            "type" => "select",
+            "label" => "Tentukan Hak Akses",
+            "placeholder" => "Pilih Hak Akses minimal 1", 
+            "isRequired" => true,
+            "list" => [
+                "keyValue" => "id",
+                "keyoption" => "title",
+                "options" => $this->mAccessTab->where('id','>', 2)->get()
+            ]
+        ]
+    )
+    );
     }
 
     /**

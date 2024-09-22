@@ -42,6 +42,9 @@ class Pengguna extends Component <RouterInterface>{
                 useCreate 
                 useHeadline
                 data={this.state.pengguna!.data}  
+                create={() => {
+                    this.props.navigate('form');
+                }}
                 show={(event) => {
                     this.setState({modalShow: true, detail: event});
                     console.log(event, "ROW");
